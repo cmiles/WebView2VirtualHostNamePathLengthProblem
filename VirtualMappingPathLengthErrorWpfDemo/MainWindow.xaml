@@ -3,10 +3,37 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:VirtualMappingPathLengthErrorWpfDemo" xmlns:wpf="clr-namespace:Microsoft.Web.WebView2.Wpf;assembly=Microsoft.Web.WebView2.Wpf"
+        xmlns:local="clr-namespace:VirtualMappingPathLengthErrorWpfDemo"
+        xmlns:wpf="clr-namespace:Microsoft.Web.WebView2.Wpf;assembly=Microsoft.Web.WebView2.Wpf"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="600" Width="900" d:DataContext="{d:DesignInstance local:MainWindow}">
     <Grid>
-        <wpf:WebView2 Name="VirtualView"></wpf:WebView2>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Border CornerRadius="2" BorderBrush="Green" BorderThickness="2" Margin="4">
+            <StackPanel Orientation="Vertical">
+                <TextBox IsReadOnly="true" BorderThickness="0" TextWrapping="Wrap" Margin="4">
+                    <TextBox.Text>
+                        <MultiBinding StringFormat="Long Directory Exists:{0}, {1}">
+                            <Binding Path=" LongFileNameFolder.Exists" Mode="OneWay"/>
+                            <Binding Path="LongFileNameFolder.FullName" Mode="OneWay"/>
+                        </MultiBinding>
+                    </TextBox.Text>
+                </TextBox>
+                <TextBox IsReadOnly="true" BorderThickness="0" TextWrapping="Wrap" Margin="4">
+                    <TextBox.Text>
+                        <MultiBinding StringFormat="Long File Exists:{0}, {1}">
+                            <Binding Path=" LongFileNameFile.Exists" Mode="OneWay" />
+                            <Binding Path="LongFileNameFile.FullName" Mode="OneWay" />
+                        </MultiBinding>
+                    </TextBox.Text>
+                </TextBox>
+            </StackPanel>
+        </Border>
+        <Border Grid.Row="1" Margin="4" CornerRadius="2" BorderBrush="Green" BorderThickness="2">
+            <wpf:WebView2 x:Name="VirtualView" />
+        </Border>
     </Grid>
 </Window>
