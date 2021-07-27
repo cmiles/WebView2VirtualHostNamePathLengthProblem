@@ -10,12 +10,15 @@ Directly related to this issues are [Maximum Path Length Limitation - Win32 apps
 
 Things tried:
  - Use group policy to enable the newer Win10 behavior that removes the MAX_PATH limitations -> Computer Configuration > Administrative Templates > System > Filesystem > Enable Win32 long paths.
- - Use the \\?\ prefix in the call to SetVirtualHostNameToFolderMapping
+ - Use the \\\\?\\ prefix in the call to SetVirtualHostNameToFolderMapping
  - Add an application manifest with:
+
+```xml
     <application xmlns="urn:schemas-microsoft-com:asm.v3">
         <windowsSettings xmlns:ws2="http://schemas.microsoft.com/SMI/2016/WindowsSettings">
             <ws2:longPathAware>true</ws2:longPathAware>
         </windowsSettings>
     </application>
+```
 
 ![Broken Img with long VirtualHostNAmePath](ScreenSnipShowingBrokenImage.JPG)
