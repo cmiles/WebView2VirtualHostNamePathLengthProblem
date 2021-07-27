@@ -67,14 +67,14 @@ namespace VirtualMappingPathLengthErrorWpfDemo
 
             await VirtualView.EnsureCoreWebView2Async();
 
-            VirtualView.CoreWebView2.SetVirtualHostNameToFolderMapping("test.com", testSiteFolder.FullName,
+            VirtualView.CoreWebView2.SetVirtualHostNameToFolderMapping("webview2longfile.test", testSiteFolder.FullName,
                 CoreWebView2HostResourceAccessKind.Allow);
 
-            VirtualView.Source = new Uri("https://test.com/index.html");
+            VirtualView.Source = new Uri("https://webview2longfile.test/index.html");
         }
 
         [NotifyPropertyChangedInvocator]
-        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
