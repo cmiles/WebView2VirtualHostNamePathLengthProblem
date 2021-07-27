@@ -12,36 +12,11 @@ namespace VirtualMappingPathLengthErrorWpfDemo
     /// </summary>
     public partial class MainWindow : INotifyPropertyChanged
     {
-        private FileInfo _longFileNameFile;
-        private DirectoryInfo _longFileNameFolder;
-
         public MainWindow()
         {
             InitializeComponent();
             InitializeAsync();
             DataContext = this;
-        }
-
-        public FileInfo LongFileNameFile
-        {
-            get => _longFileNameFile;
-            set
-            {
-                if (Equals(value, _longFileNameFile)) return;
-                _longFileNameFile = value;
-                OnPropertyChanged();
-            }
-        }
-
-        public DirectoryInfo LongFileNameFolder
-        {
-            get => _longFileNameFolder;
-            set
-            {
-                if (Equals(value, _longFileNameFolder)) return;
-                _longFileNameFolder = value;
-                OnPropertyChanged();
-            }
         }
 
         public event PropertyChangedEventHandler? PropertyChanged;
@@ -59,18 +34,19 @@ namespace VirtualMappingPathLengthErrorWpfDemo
             var testSiteFolder = new DirectoryInfo(
                 @$"{string.Join("\\", directoryParts[..Array.IndexOf(directoryParts, "VirtualMappingPathLengthErrorWpfDemo")])}\VirtualHostNameToFolderMappingPathLengthTestForLongFilePathLength-LongFolderNameToHelpEnsureLongPathLength");
 
-            LongFileNameFolder = new DirectoryInfo(Path.Combine(testSiteFolder.FullName,
-                "1808-Agua-Blanca-Ranch-Sign-at-the-Manville-Road-Entrance-to-the-Ironwood-Forest-National-Monument"));
-
-            LongFileNameFile = new FileInfo(Path.Combine(LongFileNameFolder.FullName,
-                "1808-Agua-Blanca-Ranch-Sign-at-the-Manville-Road-Entrance-to-the-Ironwood-Forest-National-Monument.jpg"));
-
             await VirtualView.EnsureCoreWebView2Async();
 
-            VirtualView.CoreWebView2.SetVirtualHostNameToFolderMapping("webview2longfile.test", testSiteFolder.FullName,
+            VirtualView.CoreWebView2.SetVirtualHostNameToFolderMapping("webview2.test", testSiteFolder.FullName,
                 CoreWebView2HostResourceAccessKind.Allow);
 
-            VirtualView.Source = new Uri("https://webview2longfile.test/index.html");
+            VirtualView.Source = new Uri("https://webview2.test/index.html");
+
+            await VirtualViewLongIndex.EnsureCoreWebView2Async();
+
+            VirtualViewLongIndex.CoreWebView2.SetVirtualHostNameToFolderMapping("webview2longindex.test", testSiteFolder.FullName,
+                CoreWebView2HostResourceAccessKind.Allow);
+
+            VirtualViewLongIndex.Source = new Uri("https://webview2longindex.test/index-long-long-long-long-long-long-long-long-long-long-long-long-long-long-long-long-long-long-long-long-long-long-long-long-long-long-long-long-long-long-long-long-long-long-long-long-long-long-long-long-long-long-long-long-long-long-long-long-long.html");
         }
 
         [NotifyPropertyChangedInvocator]

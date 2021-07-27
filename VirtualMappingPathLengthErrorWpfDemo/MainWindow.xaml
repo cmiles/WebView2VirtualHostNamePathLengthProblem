@@ -9,31 +9,14 @@
         Title="MainWindow" Height="600" Width="900" d:DataContext="{d:DesignInstance local:MainWindow}">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
         <Border CornerRadius="2" BorderBrush="Green" BorderThickness="2" Margin="4">
-            <StackPanel Orientation="Vertical">
-                <TextBox IsReadOnly="true" BorderThickness="0" TextWrapping="Wrap" Margin="4">
-                    <TextBox.Text>
-                        <MultiBinding StringFormat="Long Directory Exists:{0}, {1}">
-                            <Binding Path=" LongFileNameFolder.Exists" Mode="OneWay"/>
-                            <Binding Path="LongFileNameFolder.FullName" Mode="OneWay"/>
-                        </MultiBinding>
-                    </TextBox.Text>
-                </TextBox>
-                <TextBox IsReadOnly="true" BorderThickness="0" TextWrapping="Wrap" Margin="4">
-                    <TextBox.Text>
-                        <MultiBinding StringFormat="Long File Exists:{0}, {1}">
-                            <Binding Path=" LongFileNameFile.Exists" Mode="OneWay" />
-                            <Binding Path="LongFileNameFile.FullName" Mode="OneWay" />
-                        </MultiBinding>
-                    </TextBox.Text>
-                </TextBox>
-            </StackPanel>
+            <wpf:WebView2 x:Name="VirtualView" />
         </Border>
         <Border Grid.Row="1" Margin="4" CornerRadius="2" BorderBrush="Green" BorderThickness="2">
-            <wpf:WebView2 x:Name="VirtualView" />
+            <wpf:WebView2 x:Name="VirtualViewLongIndex" />
         </Border>
     </Grid>
 </Window>

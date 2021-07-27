@@ -2,20 +2,19 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Long File Path</title>
+    <title>Html File on Long File Path</title>
   </head>
   <body>
 
-	<img style="display: block;" src="https://webview2longfile.test/1808-Agua-Blanca-Ranch-Sign-at-the-Manville-Road-Entrance-to-the-Ironwood-Forest-National-Monument/1808-Agua-Blanca-Ranch-Sign-at-the-Manville-Road-Entrance-to-the-Ironwood-Forest-National-Monument.jpg"/>	
-	<p>The img source is:</p>
-	<p>https://webview2longfile.test/1808-Agua-Blanca-Ranch-Sign-at-the-Manville-Road-Entrance-to-the-Ironwood-Forest-National-Monument/1808-Agua-Blanca-Ranch-Sign-at-the-Manville-Road-Entrance-to-the-Ironwood-Forest-National-Monument.jpg</p>
-	<p>On my dev machine this corresponds to:</p>
-	<p>C:\Code\VirtualHostNameToFolderMappingPathLengthTest\VirtualHostNameToFolderMappingPathLengthTestForLongFilePathLength-LongFolderNameToHelpEnsureLongPathLength\1808-Agua-Blanca-Ranch-Sign-at-the-Manville-Road-Entrance-to-the-Ironwood-Forest-National-Monument\1808-Agua-Blanca-Ranch-Sign-at-the-Manville-Road-Entrance-to-the-Ironwood-Forest-National-Monument.jpg (361 characters) and the img is broken.</p>
-	
-	<img style="display: block;" src="https://webview2longfile.test/x/x.jpg"/>
-	<p>The img source is:</p>
-	<p>https://webview2longfile.test/x/x.jpg</p>
-	<p>On my dev machine this corresponds to:</p>C:\Code\VirtualHostNameToFolderMappingPathLengthTest\VirtualHostNameToFolderMappingPathLengthTestForLongFilePathLength-LongFolderNameToHelpEnsureLongPathLength\x\x.jpg (167 characters) and the img works.</p>
+	<img style="display: block;" src="https://webview2.test/1808-Agua-Blanca-Ranch-Sign-at-the-Manville-Road-Entrance-to-the-Ironwood-Forest-National-Monument/1808-Agua-Blanca-Ranch-Sign-at-the-Manville-Road-Entrance-to-the-Ironwood-Forest-National-Monument.jpg"/>
+	<p>The path to the image above is beyond MAX_PATH and has an img source of:</p>
+	<p>https://webview2.test/1808-Agua-Blanca-Ranch-Sign-at-the-Manville-Road-Entrance-to-the-Ironwood-Forest-National-Monument/1808-Agua-Blanca-Ranch-Sign-at-the-Manville-Road-Entrance-to-the-Ironwood-Forest-National-Monument.jpg</p>
+	<p><a href="https://webview2.test/1808-Agua-Blanca-Ranch-Sign-at-the-Manville-Road-Entrance-to-the-Ironwood-Forest-National-Monument/1808-Agua-Blanca-Ranch-Sign-at-the-Manville-Road-Entrance-to-the-Ironwood-Forest-National-Monument.jpg" download>Image Download Link</a></p>
+
+	<img style="display: block;" src="https://webview2.test/x/x.jpg"/>
+	<p>The img source of the image above is:</p>
+	<p>https://webview2.test/x/x.jpg</p>
+	<p>This is included as a sanity check.</p>
 	
   </body>
 </html>
