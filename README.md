@@ -21,4 +21,10 @@ Things tried:
     </application>
 ```
 
+Reported this in the [Feedback repo for Microsoft Edge WebView2](https://github.com/MicrosoftEdge/WebView2Feedback) as [Long File Paths result in Broken Content when using SetVirtualHostNameToFolderMapping · Issue #1573 · MicrosoftEdge/WebView2Feedback](https://github.com/MicrosoftEdge/WebView2Feedback/issues/1573).
+
 ![Broken Img with long VirtualHostNAmePath](ScreenSnipShowingBrokenImage.JPG)
+
+The screen shot above is from the sample app and shows:
+ - In the top panel the source is set to an html file that is below MAX_PATH value and loads, but the top image is a link to a file beyond the MAX_PATH - the error is: Failed to load resource: net::ERR_ACCESS_DENIED (the top panel also includes some other working content as a sanity check)
+ - In the bottom panel the source is set to a file with a long enough name to be over the MAX_PATH and it fails to load
